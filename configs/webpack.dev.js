@@ -21,27 +21,24 @@ module.exports = {
     devServer: {
         inline: true,
         contentBase: "public/",
-        port: 3001,
-        proxy: [
-            {
-                path: "/api/*",
-                target: "http://localhost:3001/"
-            }
-        ],
+        port: 6001,
+        proxy: [{
+            path: "/api/*",
+            target: "http://localhost:6001/"
+        }],
         historyApiFallback: true
     },
     devtool: "source-map",
     module: {
-        rules: [
-            {  
-                test: /\.ts(x?)$/, 
+        rules: [{
+                test: /\.ts(x?)$/,
                 loader: "ts-loader",
                 exclude: /node_modules/
             },
-            { 
-                enforce: "pre", 
-                test: /\.js$/, 
-                loader: "source-map-loader" 
+            {
+                enforce: "pre",
+                test: /\.js$/,
+                loader: "source-map-loader"
             },
             {
                 test: /\.css$/,
@@ -85,8 +82,8 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-          template: "src/index.html",
-          hash: true
+            template: "src/index.html",
+            hash: true
         }),
         new webpack.ProvidePlugin({
             $: 'jquery',
